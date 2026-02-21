@@ -26,17 +26,39 @@ Projeto de automacao de testes de API REST com Cypress cobrindo operacoes CRUD c
 
 ---
 
+
+---
+
 ## Tecnologias
 
-| Ferramenta | Funcao |
-|---|---|
-| Cypress 15.x | Framework de testes de API |
+| Ferramenta | Função |
+|------------|--------|
+| Cypress 15.x | Framework de teste |
 | Node.js 20.x | Runtime |
 | JavaScript | Linguagem |
-| Mochawesome | Relatorios HTML profissionais |
+| Mochawesome | Relatórios |
 | GitHub Actions | CI/CD |
 
 ---
+
+## Pré-requisitos
+
+✔ Node.js 20+  
+✔ npm  
+
+---
+
+## Instalação
+
+```bash
+# 1. Clone o repositório
+git clone https://github.com/rfslusarz/api-test-automation-cypress
+
+# 2. Entre no diretório
+cd api-test-automation-cypress
+
+# 3. Instale dependências
+npm install
 
 ## Estrutura do Projeto
 
@@ -134,7 +156,7 @@ npm install
 
 ---
 
-## Execucao dos Testes
+## Execução dos Testes
 
 ### Modo interativo (UI)
 
@@ -142,7 +164,7 @@ npm install
 npm test
 ```
 
-### Modo headless com relatorio
+### Modo headless com relatório
 
 ```bash
 npm run test:headless
@@ -162,20 +184,16 @@ npm run test:ci
 
 ---
 
-## Relatorios Mochawesome
+## Relatórios Mochawesome
 
-```bash
-# 1. Executar testes gerando JSON de resultados
+# 1. Gerar JSON de resultados
 npm run test:headless
 
-# 2. Gerar relatorio HTML
+# 2. Gerar relatório HTML
 npm run report:full
 
-# 3. Abrir relatorio no navegador (Windows)
-npm run report:open
-```
-
-O relatorio e gerado em `cypress/reports/html/index.html`.
+# 3. Abrir relatório no navegador
+npm run report:open.
 
 ---
 
