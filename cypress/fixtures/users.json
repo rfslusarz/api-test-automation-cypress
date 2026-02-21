@@ -1,0 +1,59 @@
+{
+    "validUser": {
+        "name": "Rafael Oliveira",
+        "username": "rafaoliveira",
+        "email": "rafael.oliveira@example.com",
+        "phone": "1-770-736-8031",
+        "website": "rafaoliveira.dev",
+        "address": {
+            "street": "Av. Paulista",
+            "suite": "Conj. 100",
+            "city": "Sao Paulo",
+            "zipcode": "01310-100",
+            "geo": {
+                "lat": "-23.5632",
+                "lng": "-46.6544"
+            }
+        },
+        "company": {
+            "name": "Tech Solutions Ltda",
+            "catchPhrase": "Automacao de qualidade em escala",
+            "bs": "test driven digital acceleration"
+        }
+    },
+    "updatedUser": {
+        "name": "Rafael Oliveira Atualizado",
+        "username": "rafaoliveira_v2",
+        "email": "rafael.updated@example.com",
+        "phone": "1-800-555-9999",
+        "website": "rafaoliveira-v2.dev"
+    },
+    "minimalUser": {
+        "name": "Usuario Minimo",
+        "email": "minimo@example.com"
+    },
+    "expectedUserSchema": {
+        "requiredFields": [
+            "id",
+            "name",
+            "username",
+            "email"
+        ],
+        "stringFields": [
+            "name",
+            "username",
+            "email"
+        ],
+        "optionalFields": [
+            "phone",
+            "website",
+            "address",
+            "company"
+        ]
+    },
+    "pagination": {
+        "defaultPage": 1,
+        "defaultLimit": 3,
+        "secondPage": 2
+    }
+}

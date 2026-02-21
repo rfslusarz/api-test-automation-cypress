@@ -1,0 +1,34 @@
+{
+  "name": "teste-apirest-cypress-qa-playground",
+  "version": "1.0.0",
+  "description": "Suite profissional de testes automatizados de API REST usando Cypress, com foco em operacoes CRUD e tratamento de erros HTTP. Projeto de portfolio QA Engineer.",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "scripts": {
+    "test": "cypress open",
+    "test:headless": "cypress run --reporter mochawesome --reporter-options reportDir=cypress/reports/json,overwrite=false,html=false,json=true",
+    "test:api": "cypress run --spec cypress/e2e/api/users.cy.js --reporter mochawesome --reporter-options reportDir=cypress/reports/json,overwrite=false,html=false,json=true",
+    "test:ci": "cypress run --headless --browser chrome --spec cypress/e2e/api/users.cy.js",
+    "report:merge": "mochawesome-merge cypress/reports/json/*.json -o cypress/reports/combined.json",
+    "report:generate": "marge cypress/reports/combined.json -f index -o cypress/reports/html",
+    "report:full": "npm run report:merge && npm run report:generate",
+    "report:open": "start cypress/reports/html/index.html",
+    "clean:reports": "if exist cypress\\reports rmdir /s /q cypress\\reports"
+  },
+  "keywords": [
+    "cypress",
+    "api-testing",
+    "rest-api",
+    "qa-automation",
+    "portfolio",
+    "javascript"
+  ],
+  "devDependencies": {
+    "cypress": "^15.10.0",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.3.0",
+    "mochawesome-report-generator": "^6.2.0"
+  }
+}

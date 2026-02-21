@@ -1,0 +1,37 @@
+# Dependencias do Node.js
+node_modules/
+
+# Relatorios gerados pelo mochawesome
+cypress/reports/
+
+# Capturas de tela registradas em falhas de teste
+cypress/screenshots/
+
+# Videos gravados durante a execucao dos testes
+cypress/videos/
+
+# Downloads gerados durante os testes
+cypress/downloads/
+
+# Arquivo de cache do Cypress
+.cypress-cache/
+
+# Variaveis de ambiente locais (nunca versionar secrets)
+.env
+.env.local
+.env.*.local
+cypress.env.json
+
+# Logs
+*.log
+npm-debug.log*
+
+# IDEs e editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Sistema operacional
+.DS_Store
+Thumbs.db

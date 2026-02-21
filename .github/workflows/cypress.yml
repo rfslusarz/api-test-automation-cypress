@@ -1,0 +1,100 @@
+# cypress.yml
+# Pipeline de CI/CD para execucao automatica dos testes Cypress de API REST
+#
+# Trigger: push para main/master ou abertura de Pull Request
+# Ambiente: Ubuntu, Node.js 20, Chrome headless
+# Artefatos: relatorio mochawesome gerado e publicado como artefato do workflow
+# =============================================================================
+
+name: Cypress API Tests
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  cypress-api-tests:
+    name: Run API Tests (Headless)
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false # Continua executando outros jobs mesmo se um falhar
+
+    steps:
+      # -----------------------------------------------------------------------
+      # 1. Checkout do repositorio
+      # -----------------------------------------------------------------------
+      - name: Checkout do repositorio
+        uses: actions/checkout@v4
+
+      # -----------------------------------------------------------------------
+      # 2. Configurar Node.js 20 (LTS)
+      # -----------------------------------------------------------------------
+      - name: Configurar Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      # -----------------------------------------------------------------------
+      # 3. Instalar dependencias do projeto
+      # -----------------------------------------------------------------------
+      - name: Instalar dependencias
+        run: npm ci
+
+      # -----------------------------------------------------------------------
+      # 4. Verificar versao do Cypress instalado
+      # -----------------------------------------------------------------------
+      - name: Verificar versao do Cypress
+        run: npx cypress version
+
+      # -----------------------------------------------------------------------
+      # 5. Executar testes de API em modo headless
+      #    - Usa Chrome headless para execucao mais rapida
+      #    - Gera relatorio mochawesome em JSON
+      #    - Salva screenshots em caso de falha
+      # -----------------------------------------------------------------------
+      - name: Executar testes de API REST
+        run: npm run test:ci
+        env:
+          CYPRESS_API_BASE_URL: https://jsonplaceholder.typicode.com
+          CYPRESS_API_TIMEOUT: 15000
+
+      # -----------------------------------------------------------------------
+      # 6. Publicar screenshots de falhas como artefato (se houver)
+      # -----------------------------------------------------------------------
+      - name: Upload de screenshots (falhas)
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots/
+          retention-days: 7
+
+      # -----------------------------------------------------------------------
+      # 7. Publicar videos como artefato
+      # -----------------------------------------------------------------------
+      - name: Upload de videos
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cypress-videos
+          path: cypress/videos/
+          retention-days: 7
+
+      # -----------------------------------------------------------------------
+      # 8. Publicar relatorio mochawesome como artefato
+      # -----------------------------------------------------------------------
+      - name: Upload do relatorio de testes
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mochawesome-report
+          path: cypress/reports/
+          retention-days: 30
