@@ -14,12 +14,6 @@ Projeto de automacao de testes de API REST com Cypress cobrindo operacoes CRUD c
 
 ---
 
-## Demonstracoes
-
-- **[GitHub Actions](https://github.com/rfslusarz/teste-apirest-cypress-qa-playground/actions)** - Pipeline CI/CD com execucao headless e upload de artefatos
-
----
-
 ## Visao Geral do Projeto
 
 - Suite de testes de API REST com Cypress cobrindo GET, POST, PUT e DELETE
@@ -235,24 +229,3 @@ set CYPRESS_API_TIMEOUT=20000 && npx cypress run
 
 ---
 
-## Decisoes Tecnicas
-
-**Por que Cypress para testes de API?**
-`cy.request()` integra chamadas HTTP ao mesmo ciclo de vida dos testes, compartilhando configuracoes, retries e relatorios. Ideal para portfolios que combinam testes de API e E2E.
-
-**Limitacoes do JSONPlaceholder**
-`POST`, `PUT` e `DELETE` sao simulados sem persistencia de dados. Todos os testes documentam e consideram esse comportamento com comentarios explicativos.
-
-**Retries automaticos**
-2 tentativas em `runMode` (CI) e 1 em `openMode`. Reduz falsos negativos por instabilidade de rede.
-
----
-
-## Seguranca da Informacao
-
-Este projeto foi desenvolvido exclusivamente para fins de estudo e portfolio.
-
-- Utiliza apenas a API publica JSONPlaceholder para demonstracao
-- Nao contem credenciais reais, dados pessoais ou informacoes sensiveis
-- Nenhuma chave, token ou segredo e versionado no repositorio
-- Variaveis sensiveis sao gerenciadas via `cypress.env.json` (ignorado pelo Git) e GitHub Secrets
