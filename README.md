@@ -1,4 +1,4 @@
-# Automacao de Testes de API REST - Cypress
+# Automação de Testes de API REST - Cypress
 
 [![CI Status](https://github.com/rfslusarz/teste-apirest-cypress-qa-playground/actions/workflows/cypress.yml/badge.svg?branch=main)](https://github.com/rfslusarz/teste-apirest-cypress-qa-playground/actions/workflows/cypress.yml)
 ![Cypress](https://img.shields.io/badge/Cypress-15.x%2B-green?style=flat-square&logo=cypress)
@@ -7,22 +7,22 @@
 ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-CI-blue?style=flat-square&logo=githubactions)
 ![License](https://img.shields.io/badge/License-ISC-yellow?style=flat-square&logo=opensourceinitiative)
 
-Projeto de automacao de testes de API REST com Cypress cobrindo operacoes CRUD completas (GET, POST, PUT, DELETE), validacao de schema e tratamento de erros HTTP. Desenvolvido como projeto de portfolio de QA Engineer.
+Projeto de automação de testes de API REST com Cypress cobrindo operações CRUD completas (GET, POST, PUT, DELETE), validação de schema e tratamento de erros HTTP. Desenvolvido como projeto de portfólio e estudos.
 
-**API alvo:** [QA Playground](https://playground-for-qa.vercel.app/playground) - secao "Testes de API REST"
+**API alvo:** [QA Playground](https://playground-for-qa.vercel.app/playground) - seção "Testes de API REST"
 **Backend:** [JSONPlaceholder](https://jsonplaceholder.typicode.com) (mock REST API publica)
 
 ---
 
-## Visao Geral do Projeto
+## Visão Geral do Projeto
 
-- Suite de testes de API REST com Cypress cobrindo GET, POST, PUT e DELETE
-- Arquitetura em camadas com separacao entre cliente HTTP, validacoes e testes
+- Suíte de testes de API REST com Cypress cobrindo GET, POST, PUT e DELETE
+- Arquitetura em camadas com separaçãoo entre cliente HTTP, validações e testes
 - Validacao de schema de response (contract testing) em todos os endpoints
-- Cenarios negativos: 404, IDs invalidos e payloads inesperados
-- Geracao de relatorio HTML com Mochawesome
+- Cenários negativos: 404, IDs inválidos e payloads inesperados
+- Geração de relatório HTML com Mochawesome
 - Pipeline CI/CD com GitHub Actions e upload de artefatos
-- Retry automatico configurado para estabilidade em CI
+- Retry automático configurado para estabilidade em CI
 
 ---
 
@@ -66,7 +66,7 @@ npm install
 cypress/
  ├── e2e/
  │   └── api/
- │       └── users.cy.js       # Suite principal (CRUD + cenarios negativos)
+ │       └── users.cy.js       # Suíte principal (CRUD + cenarios negativos)
  ├── fixtures/
  │   └── users.json            # Dados de teste externalizados
  └── support/
@@ -203,27 +203,27 @@ O pipeline e ativado automaticamente em push e pull request para `main`.
 
 ### Etapas do Pipeline
 
-1. Checkout do codigo
+1. Checkout do código
 2. Setup Node.js 20 com cache de npm
-3. Instalacao de dependencias com `npm ci`
-4. Verificacao da versao do Cypress
-5. Execucao dos testes em modo headless (Chrome)
-6. Upload de screenshots de falhas como artefato (retencao: 7 dias)
-7. Upload de videos como artefato (retencao: 7 dias)
-8. Upload do relatorio Mochawesome (retencao: 30 dias)
+3. Instalação de dependencias com `npm ci`
+4. Verificação da versão do Cypress
+5. Execução dos testes em modo headless (Chrome)
+6. Upload de screenshots de falhas como artefato (retenção: 7 dias)
+7. Upload de videos como artefato (retenção: 7 dias)
+8. Upload do relatorio Mochawesome (retenção: 30 dias)
 
 ### Variaveis no CI
 
-| Variavel | Valor padrao |
+| Variável | Valor padrão |
 |---|---|
 | `CYPRESS_API_BASE_URL` | `https://jsonplaceholder.typicode.com` |
 | `CYPRESS_API_TIMEOUT` | `15000` |
 
 ---
 
-## Variaveis de Ambiente (local)
+## Variáveis de Ambiente (local)
 
-Crie `cypress.env.json` na raiz (nao versionado):
+Crie `cypress.env.json` na raiz (não versionado):
 
 ```json
 {
